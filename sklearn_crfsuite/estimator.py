@@ -311,7 +311,10 @@ class CRF(BaseEstimator):
             train_data = tqdm(train_data, "loading training data to CRFsuite", len(X), leave=True)
 
         for xseq, yseq in train_data:
-            trainer.append(xseq, yseq)
+            try:
+                trainer.append(xseq, yseq)
+            except:
+                pass
 
         if self.verbose:
             print("")
